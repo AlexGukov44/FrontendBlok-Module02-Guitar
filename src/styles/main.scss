@@ -1,0 +1,8 @@
+/*@import 'font';   браузер ругается, говорит это не актуальная форма */
+
+@use 'font';
+@use 'var';
+
+body {
+    font-family: $font;
+}
