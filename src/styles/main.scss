@@ -3,6 +3,7 @@
 
 body {
     font-family: $font;
+    color: $light;
     font-weight: 400;
     background-color: #1f2023;
 }
@@ -102,4 +103,32 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50px;
+    &__title {
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 110%;
+    }
+}
+
+.banner-box {
+    border: 1px solid $light;
+    border-radius: 20px;
+    position: relative;
+    &__title {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 110%;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+    }
+    &__text {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 150%;
+    }
+    &__img {
+        position: absolute;
+        top: -68px;
+        right: -20px;
+    }
 }
