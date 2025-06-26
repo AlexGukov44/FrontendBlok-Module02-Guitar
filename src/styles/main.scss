@@ -6,6 +6,7 @@ body {
     color: $light;
     font-weight: 400;
     background-color: #1f2023;
+    overflow-x: hidden;
 }
 
 a {
@@ -112,6 +113,9 @@ a {
     gap: 50px;
     &__main {
         flex-basis: 61%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     &__info {
         flex-basis: calc(39% - 50px);
@@ -125,19 +129,23 @@ a {
         border-right: none;
         border-radius: 20px 0 0 20px;
         position: relative;
+        z-index: 1;
         padding: 30px;
         margin-right: 80px;
         box-sizing: border-box;
         transition: $tr;
         &:hover {
-            background-color: $accent;
-            border-color: $accent;
-            &::after {
+            &::before {
+                width: 100%;
                 opacity: 1;
             }
             .banner__decor {
                 background-color: $accent;
-                background-color: $accent;
+                border-color: $accent;
+                &::after {
+                    transform: translate(0 0) scale(1);
+                    opacity: 1;
+                }
             }
         }
         & + & {
@@ -146,26 +154,15 @@ a {
         &::before {
             content: '';
             display: block;
-            width: 80px;
+            width: 0;
             height: 151px;
-            background-image: url(../images/banner-info-decor.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
+            background-color: $accent;
+            border: 1px solid $accent;
+            border-radius: 20px 0 0 20px;
             position: absolute;
-            right: -80px;
-            top: 0;
-        }
-        &::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 151px;
-            background-image: url(../images/banner-info-decor-hover.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: absolute;
-            right: -80px;
-            top: 0;
+            top: -2px;
+            right: 0;
+            z-index: -1;
             opacity: 0;
             transition: $tr;
         }
@@ -195,6 +192,32 @@ a {
         border-radius: 10px;
         box-sizing: border-box;
         transition: $tr;
+        &::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 151px;
+            background-image: url(../images/banner-info-decor.svg);
+            background-repeat: no-repeat;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 151px;
+            transform: translate(-50% 0) scale(0);
+            background-image: url(../images/banner-info-decor-hover.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            right: 0;
+            top: -2px;
+            opacity: 0;
+            transition: $tr;
+        }
     }
     &__title {
         font-size: 64px;
@@ -252,5 +275,45 @@ a {
             top: -68px;
             right: -20px;
         }
+    }
+}
+
+.tag {
+    display: flex;
+    gap: 64px;
+    animation: move-left 20s infinite linear alternate;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    &:hover {
+        animation-play-state: paused;
+    }
+    &__text {
+        font-size: 24px;
+        font-weight: 200;
+        line-height: 110%;
+        padding: 10px 20px;
+        border: 1px solid $gray;
+        border-radius: 50px;
+        position: relative;
+        &::before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 16px;
+            background-color: $accent;
+            border-radius: 100%;
+            position: absolute;
+            left: -40px;
+            top: calc(50% - 8px);
+        }
+    }
+}
+
+@keyframes move-left {
+    0% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
     }
 }
