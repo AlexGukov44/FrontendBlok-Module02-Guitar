@@ -36,6 +36,9 @@ button {
     position: fixed;
     top: 0;
     z-index: 999;
+    @media (max-width: $r_tab) {
+        height: 66px;
+    }
     &::before {
         content: '';
         display: block;
@@ -46,12 +49,18 @@ button {
         top: 0;
         left: 0;
         z-index: -1;
+        @media (max-width: $r_tab) {
+            top: -2px;
+        }
     }
     &__logo {
         background-color: $accent;
         padding: 17px 45px 0 45px;
         border-radius: 10px 0 0 0;
         position: relative;
+        @media (max-width: $r_desk) {
+            padding: 17px 20px 0 20px;
+        }
         &::before {
             content: '';
             display: block;
@@ -73,15 +82,25 @@ button {
             position: absolute;
             top: 0;
             right: -68px;
+            @media (max-width: $r_tab) {
+                height: 66px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                right: -66px;
+            }
         }
     }
-    &__link {
-        color: $light;
-        font-size: 20px;
+    &__info {
         background-color: $accent;
         padding: 17px 45px 0 45px;
-        border-radius: 0 10px 0 0;
         position: relative;
+        @media (max-width: $r_desk) {
+            padding: 17px 20px 0 20px;
+        }
+        @media (max-width: $r_tab) {
+            padding: 20px 20px 0 20px;
+        }
+        border-radius: 0 10px 0 0;
         &::before {
             content: '';
             display: block;
@@ -103,11 +122,39 @@ button {
             position: absolute;
             top: 0;
             left: -68px;
+            @media (max-width: $r_tab) {
+                height: 66px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                left: -60px;
+            }
+        }
+    }
+    &__link {
+        color: $light;
+        font-size: 20px;
+        border-bottom: 1px solid $light;
+        padding-bottom: 5px;
+        transition: $tr;
+        @media (hover: hover) {
+            &:hover {
+                border-bottom: 1px solid $accent;
+            }
+        }
+        @media (max-width: $r_tab) {
+            font-size: 16px;
         }
     }
 }
 
 .logo {
+    &._max {
+        width: 400px;
+        height: 31px;
+        @media (max-width: $r_desk) {
+            width: clamp(300px, 39vw, 400px);
+        }
+    }
     &._min {
         svg {
             width: 296px;
@@ -120,9 +167,13 @@ button {
     width: 100%;
     max-width: 1830px;
     margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 45px;
+    padding-right: 45px;
     box-sizing: border-box;
+    @media (max-width: $r_desk) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .banner {
